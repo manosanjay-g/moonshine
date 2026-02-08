@@ -46,8 +46,26 @@
         >
       </div>
     </div>
-    <button class="button" onclick="location.href='activities.html'">
+    <button class="button" id="continueBtn" onclick="location.href='activities.html'">
       Continue :)
     </button>
   </body>
+  <script>
+    document.getElementById("continueBtn").addEventListener("click", function () {
+    const selectedDesserts = Array.from(
+      document.querySelectorAll('input[name="dessert"]:checked')
+    ).map((checkbox) => checkbox.value);
+
+    // Store in localStorage
+    localStorage.setItem(
+      "selectedDesserts",
+      JSON.stringify(selectedDesserts)
+    );
+
+    console.log("Desserts chosen:", selectedDesserts);
+
+    // Move to next page
+    window.location.href = "activities.html";
+  });
+  </script>
 </html>

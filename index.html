@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,22 +8,28 @@
   </head>
   <body>
     <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
-    <button class="answerButton" onclick="location.href='thankyou.html'">
-      Yes,   Obvioooo
+    <button class="answerButton" onclick="location.href = 'thankyou.html'">
+      Yes, Obvioooo
     </button>
     <button class="answerButton" id="noButton">Mudiyaadhu</button>
     <br />
-    <img src="please.png" height="498px" width="150px" alt="cat asking question" class="responsive" />
+    <img
+      src="please.png"
+      height="498px"
+      width="150px"
+      alt="cat asking question"
+      class="responsive"
+    />
 
     <script>
       document
         .getElementById("noButton")
         .addEventListener("click", function () {
           var yesButton = document.querySelector(
-            'button[onclick*="thankyou.html"]'
+            'button[onclick*="thankyou.html"]',
           );
           var currentFontSize = parseInt(
-            window.getComputedStyle(yesButton).fontSize
+            window.getComputedStyle(yesButton).fontSize,
           );
           yesButton.style.fontSize = currentFontSize + 10 + "px"; // Increase font size by 5px
         });

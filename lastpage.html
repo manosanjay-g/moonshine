@@ -1,62 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Letter</title>
     <link rel="stylesheet" href="css/flower.css" />
+
+    <style>
+      .letter {
+        max-width: 600px;
+        margin: 0px auto;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 12px;
+        font-family: Georgia, serif;
+        line-height: 1.8;
+        color: #333;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .letter p {
+        margin-bottom: 16px;
+      }
+    </style>
   </head>
+
   <body>
     <div id="thankyou"><b>Thank you for being my girlfriend</b></div>
-    <div class="flower">
-      <div class="f-wrapper">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--yellow"
-          ></div>
-        </div>
-      </div>
+    <div id="letter" class="letter"></div>
 
-      <div class="f-wrapper f-wrapper--2">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--pink"
-          ></div>
-        </div>
-      </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const getJSON = (key, fallback = []) => {
+          try {
+            return JSON.parse(localStorage.getItem(key)) ?? fallback;
+          } catch {
+            return fallback;
+          }
+        };
 
-      <div class="f-wrapper f-wrapper--3">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--purple"
-          ></div>
-        </div>
-      </div>
-      <div class="flower__glass"></div>
-    </div>
+        const date =
+          localStorage.getItem("selectedDate") || "a day we’ll remember";
+        const food = getJSON("selectedFood");
+        const desserts = getJSON("selectedDesserts");
+        const activities = getJSON("selectedActivities");
+
+        const letterHTML = `
+          <p>Hey Shrenidhi ❤️,</p>
+
+          <p>
+            I wanted to write this down instead of saying it out loud,
+            because some things deserve to be remembered properly.
+          </p>
+
+          <p>Here’s what I have in mind for us:</p>
+
+          <p>
+            <b>📅 The day:</b><br />
+            ${date}
+          </p>
+
+          <p>
+            <b>🍽️ What we’ll eat:</b><br />
+            ${food.length ? food.join(", ") : "Whatever we feel like that day"}
+          </p>
+
+          <p>
+            <b>🍰 Something sweet:</b><br />
+            ${
+              desserts.length
+                ? desserts.join(", ")
+                : "Definitely something sweet"
+            }
+          </p>
+
+          <p>
+            <b>🎉 What we’ll do:</b><br />
+            ${
+              activities.length
+                ? activities.join(", ")
+                : "Just being together"
+            }
+          </p>
+
+          <p>
+            No rush. No pressure.<br />
+            Just us, taking our time.
+          </p>
+
+          <p>
+            Can’t wait 🤍,<br />
+            Manny
+          </p>
+        `;
+
+        document.getElementById("letter").innerHTML = letterHTML;
+      });
+    </script>
   </body>
 </html>

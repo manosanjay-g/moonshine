@@ -56,8 +56,27 @@
         <label><input type="checkbox" name="food" value="Butter Prawn" /> Butter Prawn</label>
       </div>
     </div>
-    <button class="button" onclick="location.href='dessert.html'">
+    <button class="button" id="continueBtn" onclick="location.href='dessert.html'">
       Continue :p 
     </button>
   </body>
+  <script>
+  document.getElementById("continueBtn").addEventListener("click", function () {
+    const selectedFood = Array.from(
+      document.querySelectorAll('input[name="food"]:checked')
+    ).map((checkbox) => checkbox.value);
+
+    // Store in localStorage
+    localStorage.setItem(
+      "selectedFood",
+      JSON.stringify(selectedFood)
+    );
+
+    console.log("Food chosen:", selectedFood);
+
+    // Navigate after saving
+    window.location.href = "dessert.html";
+  });
+</script>
+
 </html>

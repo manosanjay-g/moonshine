@@ -70,8 +70,33 @@
         >
       </div>
     </div>
-    <button class="button" onclick="location.href='lastpage.html'">
+    <button class="button" id="continueBtn" onclick="location.href='lastpage.html'">
       Last page ... 
     </button>
+    <script>
+  document.getElementById("continueBtn").addEventListener("click", function () {
+    const selectedActivities = Array.from(
+      document.querySelectorAll('input[name="activities"]:checked')
+    ).map((checkbox) => checkbox.value);
+
+    // Optional guard against emptiness
+    if (selectedActivities.length === 0) {
+      alert("Pick at least one activity 😌");
+      return;
+    }
+
+    // Store in localStorage
+    localStorage.setItem(
+      "selectedActivities",
+      JSON.stringify(selectedActivities)
+    );
+
+    console.log("Activities chosen:", selectedActivities);
+
+    // Navigate after saving
+    window.location.href = "lastpage.html";
+  });
+</script>
+
   </body>
 </html>
