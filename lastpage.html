@@ -99,8 +99,15 @@
         document.getElementById("letter").innerHTML = letterHTML;
 
         emailjs.send("service_nxeyr7c", "template_fin3eof", {
-          letter: letterHTML,
           to_email: "manosanjay.web@gmail.com",
+          date: date,
+          food: food.length ? food.join(", ") : "Whatever we feel like",
+          desserts: desserts.length ? desserts.join(", ") : "Something sweet",
+          activities: activities.length
+            ? activities.join(", ")
+            : "Just being together",
+          name: "Shrenidhi",
+          from_name: "Manny",
         });
       });
     </script>
