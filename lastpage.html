@@ -33,7 +33,7 @@
 
   <body>
     <div id="thankyou"><b>Thank you for being my girlfriend</b></div>
-    <div id="letter" class="letter"></div>
+    <div style="text-align: center;"><b>Check your email for more details (shrenidhic@gmail.com)</b></div>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -99,7 +99,7 @@
         document.getElementById("letter").innerHTML = letterHTML;
 
         emailjs.send("service_nxeyr7c", "template_fin3eof", {
-          to_email: "shrenidhic@gmail.com",
+          to_email: "manosanjay.web@gmail.com",
           date: date,
           food: food.length ? food.join(", ") : "Whatever we feel like",
           desserts: desserts.length ? desserts.join(", ") : "Something sweet",
