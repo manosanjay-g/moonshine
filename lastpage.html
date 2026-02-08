@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Letter</title>
     <link rel="stylesheet" href="css/flower.css" />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("tXU3Pw1VvZeWMk8LY");
+      })();
+    </script>
 
     <style>
       .letter {
@@ -76,11 +82,7 @@
 
           <p>
             <b>🎉 What we’ll do:</b><br />
-            ${
-              activities.length
-                ? activities.join(", ")
-                : "Just being together"
-            }
+            ${activities.length ? activities.join(", ") : "Just being together"}
           </p>
 
           <p>
@@ -95,6 +97,11 @@
         `;
 
         document.getElementById("letter").innerHTML = letterHTML;
+
+        emailjs.send("service_nxeyr7c", "template_fin3eof", {
+          letter: letterHTML,
+          to_email: "manosanjay.web@gmail.com",
+        });
       });
     </script>
   </body>
